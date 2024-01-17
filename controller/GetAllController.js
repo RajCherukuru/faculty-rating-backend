@@ -389,10 +389,10 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
         return a.color - b.color;
       });
       
-            newData.sort((a, b) => parseFloat(b.averageWeightedTotal) - parseFloat(a.averageWeightedTotal));
-
+        newData.sort((a, b) => parseFloat(b.averageWeightedTotal) - parseFloat(a.averageWeightedTotal));
+        console.log(newData)
   
-      console.log(processedData);
+      // console.log(processedData);
   
       return res.status(200).json({
         success: true,

@@ -83,7 +83,27 @@ exports.deleteAssignment= async (req, res) =>{
     //   }
     
     
-    
+// set all of htem to 0
+    // await assignmentModel.updateMany({}, {
+    //     $set: {
+    //       studentEvaluation: 0,
+    //       course: 0,
+    //       teachingStudentMentor: 0,
+    //       notes: "",
+    //       overall: 0,
+    //       publications: 0,
+    //       researchFunding: 0,
+    //       researchStudentMentor: 0,
+    //       notes2: "",
+    //       overall2: 0,
+    //       internal: 0,
+    //       external: 0,
+    //       notes3: "",
+    //       overall3: 0,
+    //       weightedTotal: 0,
+    //       averageWeightedTotal:0
+    //     }
+    //   });    
     
     
 

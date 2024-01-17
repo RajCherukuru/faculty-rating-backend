@@ -109,9 +109,9 @@ exports.updateCommittee= async (req, res) =>{
 
 
       
-          const updatedoverall = (studentEvaluation + course + teachingStudentMentor)/3;
-          const updatedoverall2 = (publications + researchFunding + researchStudentMentor)/3;
-          const updatedoverall3 = (internal + external)/2;
+          const updatedoverall = ((studentEvaluation + course + teachingStudentMentor)/3).toFixed(2);
+          const updatedoverall2 = ((publications + researchFunding + researchStudentMentor)/3).toFixed(2);
+          const updatedoverall3 = ((internal + external)/2).toFixed(2);
          
 
             const actualoverall= (overallModified) ? updatedoverall : overall
