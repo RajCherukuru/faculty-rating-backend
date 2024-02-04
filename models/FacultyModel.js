@@ -8,6 +8,9 @@ const facultySchema= new mongoose.Schema({
         required:true,
         trim:true
     },
+    link:{
+        type:String,
+    },
     currentRank:{
         type:String,
         required:true,

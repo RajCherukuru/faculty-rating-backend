@@ -215,6 +215,7 @@ exports.updateCommittee= async (req, res) =>{
       try {
         const {
           name,
+          link,
           currentRank,
           startDate,
           teaching,
@@ -246,6 +247,7 @@ exports.updateCommittee= async (req, res) =>{
           { _id: id },
           {
             name,
+            link,
             currentRank,
             startDate,
             teaching,
@@ -255,7 +257,7 @@ exports.updateCommittee= async (req, res) =>{
         );
 
 
-        const changeAssigment= await assignmentModel.updateMany({name:previous.name}, {$set: {name,
+        const changeAssigment= await assignmentModel.updateMany({name:previous.name}, {$set: {name, link,
           currentRank,
           startingAsu: startDate,
           teaching,
