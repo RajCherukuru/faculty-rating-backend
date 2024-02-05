@@ -71,59 +71,146 @@ exports.updateCommittee= async (req, res) =>{
       
           const id = req.params.id;
 
-          console.log("we are inside updated assignment controller")
 
-          console.log("what is overall value", overall)
+console.log("are we here inside update controller")
 
-          const current= await assignmentModel.findOne({ _id: id });
 
-          console.log(current);
-          let overallModified=false;
-          let overall2Modified=false;
-          let overall3Modified=false;
 
-          if (
-            parseFloat(current.studentEvaluation) !== parseFloat(studentEvaluation) ||
-            parseFloat(current.course) !== parseFloat(course) ||
-            parseFloat(current.teachingStudentMentor) !== parseFloat(teachingStudentMentor)
-          ) {
-            overallModified = true;
-          }
+          // updating the overall.    if u enter overall it stays the same but if chagne anyother value the avg will be calcauted for overall.  
+
+          // console.log("we are inside updated assignment controller")
+
+          // console.log("what is overall value", overall)
+
+          // const current= await assignmentModel.findOne({ _id: id });
+
+          // console.log(current);
+          // let overallModified=false;
+          // let overall2Modified=false;
+          // let overall3Modified=false;
+
+          // if (
+          //   parseFloat(current.studentEvaluation) !== parseFloat(studentEvaluation) ||
+          //   parseFloat(current.course) !== parseFloat(course) ||
+          //   parseFloat(current.teachingStudentMentor) !== parseFloat(teachingStudentMentor)
+          // ) {
+          //   overallModified = true;
+          // }
       
-          console.log(overallModified);
+          // console.log(overallModified);
       
-          if (
-            parseFloat(current.publications) !== parseFloat(publications) ||
-            parseFloat(current.researchFunding) !== parseFloat(researchFunding) ||
-            parseFloat(current.researchStudentMentor) !== parseFloat(researchStudentMentor)
-          ) {
-            overall2Modified = true;
-          }
+          // if (
+          //   parseFloat(current.publications) !== parseFloat(publications) ||
+          //   parseFloat(current.researchFunding) !== parseFloat(researchFunding) ||
+          //   parseFloat(current.researchStudentMentor) !== parseFloat(researchStudentMentor)
+          // ) {
+          //   overall2Modified = true;
+          // }
       
-          if (
-            parseFloat(current.internal) !== parseFloat(internal) ||
-            parseFloat(current.external) !== parseFloat(external)
-          ) {
-            overall3Modified = true;
-          }
+          // if (
+          //   parseFloat(current.internal) !== parseFloat(internal) ||
+          //   parseFloat(current.external) !== parseFloat(external)
+          // ) {
+          //   overall3Modified = true;
+          // }
 
 
       
-          const updatedoverall = ((studentEvaluation + course + teachingStudentMentor)/3).toFixed(2);
-          const updatedoverall2 = ((publications + researchFunding + researchStudentMentor)/3).toFixed(2);
-          const updatedoverall3 = ((internal + external)/2).toFixed(2);
+          // const updatedoverall = ((studentEvaluation + course + teachingStudentMentor)/3).toFixed(2);
+          // const updatedoverall2 = ((publications + researchFunding + researchStudentMentor)/3).toFixed(2);
+          // const updatedoverall3 = ((internal + external)/2).toFixed(2);
          
 
-            const actualoverall= (overallModified) ? updatedoverall : overall
-            const actualoverall2= (overall2Modified) ? updatedoverall2 : overall2
-            const actualoverall3= (overall3Modified) ? updatedoverall3 : overall3
+          //   const actualoverall= (overallModified) ? updatedoverall : overall
+          //   const actualoverall2= (overall2Modified) ? updatedoverall2 : overall2
+          //   const actualoverall3= (overall3Modified) ? updatedoverall3 : overall3
 
-            console.log(actualoverall, actualoverall2, actualoverall3);
+          //   console.log(actualoverall, actualoverall2, actualoverall3);
 
-            const updatedweight =
-            (teaching / 100) * actualoverall +
-            (research / 100) * actualoverall2 +
-            (service / 100) * actualoverall3;
+          //   const updatedweight =
+          //   (teaching / 100) * actualoverall +
+          //   (research / 100) * actualoverall2 +
+          //   (service / 100) * actualoverall3;
+
+
+          let updatedoverall;
+          let updatedoverall2;
+          let updatedoverall3;
+
+          // const current= await assignmentModel.findOne({ _id: id });
+
+          // if(current.studentEvaluation === 0 && current.course === 0 && current.teachingStudentMentor === 0 && current.overall === 0){
+          //   if(overall===0){
+          //     updatedoverall = ((studentEvaluation + course + teachingStudentMentor)/3).toFixed(2);
+          //   }
+          //   else{
+          //     updatedoverall = overall;
+          //   }
+          // }
+          // else{
+          //   updatedoverall = overall;
+          // }
+
+          // if(current.publications === 0 && current.researchFunding === 0 && current.researchStudentMentor === 0 && current.overall2 === 0){
+          //   if(overall2===0){
+          //     updatedoverall2 = ((publications + researchFunding + researchStudentMentor)/3).toFixed(2);
+          //   }
+          //   else{
+          //     updatedoverall2 = overall2;
+          //   }
+          // }
+          // else{
+          //   updatedoverall2 = overall2;
+          // }
+
+          // if(current.internal === 0 && current.external === 0 &&  current.overall3 === 0){
+          //   if(overall3===0){
+          //     updatedoverall3 = ((internal + external)/2).toFixed(2);
+          //   }
+          //   else{
+          //     updatedoverall3 = overall3;
+          //   }
+          // }
+          // else{
+          //   updatedoverall3 = overall3;
+          // }
+
+
+
+
+
+
+          if(overall !== 0){
+            updatedoverall=overall;
+          }
+          else{
+            updatedoverall = ((studentEvaluation + course + teachingStudentMentor)/3).toFixed(2);
+          }
+
+
+          if(overall2 !== 0){
+            updatedoverall2=overall2;
+          }
+          else{
+            updatedoverall2 = ((publications + researchFunding + researchStudentMentor)/3).toFixed(2);
+          }
+
+
+          if(overall3 !== 0){
+            updatedoverall3 =overall3;
+          }
+          else{
+            updatedoverall3 = ((internal + external)/2).toFixed(2);
+          }
+
+          const updatedweight =
+             (teaching / 100) * updatedoverall +
+             (research / 100) * updatedoverall2 +
+             (service / 100) * updatedoverall3;
+
+         
+    console.log("we cacluated the new updates")
+
 
       
           const updated = await assignmentModel.findByIdAndUpdate(
@@ -139,21 +226,23 @@ exports.updateCommittee= async (req, res) =>{
               course,
               teachingStudentMentor,
               notes,
-              overall: actualoverall,
+              overall: updatedoverall,
               publications,
               researchFunding,
               researchStudentMentor,
               notes2,
-              overall2: actualoverall2,
+              overall2: updatedoverall2,
               internal,
               external,
               notes3,
-              overall3: actualoverall3,
+              overall3: updatedoverall3,
               weightedTotal: updatedweight.toFixed(2),
               assignment,
             },
             { new: true }
           );
+
+          console.log("we updaed the avlues properly")
       
           const findName = updated.name;
       
@@ -183,7 +272,7 @@ exports.updateCommittee= async (req, res) =>{
           );
       
           // const check = await assignmentModel.find({ name: findName });
-          // console.log("we are checking:", check);
+          console.log("we are the the return statemetn inisd assginemt");
       
           return res.status(200).json({
             status: true,
