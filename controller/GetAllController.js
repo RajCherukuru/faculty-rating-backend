@@ -274,6 +274,9 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
         let avgOverall3 = 0;
         let avgWeightedTotal = 0;
         let avgAverageWeightedTotal = 0;
+        let avgNotes1="";
+        let avgNotes2="";
+        let avgNotes3="";
         let name;
 
 
@@ -287,16 +290,32 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
         avgStudentEvaluation += parseFloat(row.studentEvaluation);
         avgCourse += parseFloat(row.course);
         avgTeachingStudentMentor += parseFloat(row.teachingStudentMentor);
+        if(row.notes){
+          avgNotes1=avgNotes1+row.notes+", ";
+        }
         avgOverall += parseFloat(row.overall);
         avgPublications += parseFloat(row.publications);
         avgResearchFunding += parseFloat(row.researchFunding);
         avgResearchStudentMentor += parseFloat(row.researchStudentMentor);
+        if(row.notes2){
+          avgNotes2=avgNotes2+row.notes2+", ";
+        }
         avgOverall2 += parseFloat(row.overall2);
         avgInternal += parseFloat(row.internal);
         avgExternal += parseFloat(row.external);
+        if(row.notes3){
+          avgNotes3=avgNotes3+row.notes3+", ";
+        }
+        
         avgOverall3 += parseFloat(row.overall3);
         avgWeightedTotal += parseFloat(row.weightedTotal);
         avgAverageWeightedTotal += parseFloat(row.averageWeightedTotal);
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        console.log(row.name, avgNotes1)
+        console.log(row.name, avgNotes2)
+        console.log(row.name, avgNotes3)
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
         
 
@@ -310,13 +329,16 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
           avgStudentEvaluation = (avgStudentEvaluation / 3).toFixed(2);
           avgCourse = (avgCourse / 3).toFixed(2);
           avgTeachingStudentMentor = (avgTeachingStudentMentor / 3).toFixed(2);
+          avgNotes1=avgNotes1;
           avgOverall = (avgOverall / 3).toFixed(2);
           avgPublications = (avgPublications / 3).toFixed(2);
           avgResearchFunding = (avgResearchFunding / 3).toFixed(2);
           avgResearchStudentMentor = (avgResearchStudentMentor / 3).toFixed(2);
+          avgNotes2=avgNotes2;
           avgOverall2 = (avgOverall2 / 3).toFixed(2);
           avgInternal = (avgInternal / 3).toFixed(2);
           avgExternal = (avgExternal / 3).toFixed(2);
+          avgNotes3=avgNotes3;
           avgOverall3 = (avgOverall3 / 3).toFixed(2);
           avgWeightedTotal = (avgWeightedTotal / 3).toFixed(2);
           avgAverageWeightedTotal = (avgAverageWeightedTotal / 3).toFixed(2);
@@ -334,13 +356,16 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
                 studentEvaluation: avgStudentEvaluation,
                 course: avgCourse,
                 teachingStudentMentor: avgTeachingStudentMentor,
+                notes:avgNotes1,
                 overall: avgOverall,
                 publications: avgPublications,
                 researchFunding: avgResearchFunding,
                 researchStudentMentor: avgResearchStudentMentor,
+                notes2:avgNotes2,
                 overall2: avgOverall2,
                 internal: avgInternal,
                 external: avgExternal,
+                notes3:avgNotes3,
                 overall3: avgOverall3,
                 weightedTotal: avgWeightedTotal,
                 averageWeightedTotal: avgAverageWeightedTotal,
@@ -364,6 +389,9 @@ const value = await assignmentModel.find({ currentRank: search, name: { $nin: fi
             avgOverall3 = 0;
             avgWeightedTotal = 0;
             avgAverageWeightedTotal = 0;
+            avgNotes1="";
+            avgNotes2="";
+            avgNotes3="";
           count = 0;
         }
 
